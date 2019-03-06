@@ -12,7 +12,7 @@ public class MainClient {
 
         IMap map = client.getMap();
 
-        System.out.println(map.get(1));
+        System.out.println("get data >>>>>>>>> " + map.get(1));
 
         client.getClient().shutdown();
     }
