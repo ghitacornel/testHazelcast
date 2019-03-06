@@ -14,9 +14,12 @@ public class Client {
 
     public Client() {
         ClientConfig config = new ClientConfig();
-//        config.getNetworkConfig().addAddress("");// for remote connections
-        config.getGroupConfig().setName("dev");
-        config.getGroupConfig().setPassword("dev-pass");
+        config.getNetworkConfig().setConnectionAttemptPeriod(3);
+        config.getNetworkConfig().setConnectionAttemptPeriod(500);
+//        config.getNetworkConfig().addAddress("192.168.0.1","172.19.0.2");// for remote connections
+//        config.getNetworkConfig().addOutboundPort(5701);// for remote connections
+//        config.getGroupConfig().setName("dev");
+//        config.getGroupConfig().setPassword("dev-pass");
         client = HazelcastClient.newHazelcastClient(config);
     }
 
