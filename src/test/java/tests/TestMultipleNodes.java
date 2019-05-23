@@ -11,6 +11,7 @@ public class TestMultipleNodes {
     private static final ServerNode server1 = new ServerNode();
     private static final ServerNode server2 = new ServerNode();
     private static final ServerNode server3 = new ServerNode();
+    private static final ServerNode server4 = new ServerNode();
 
     private ClientWriter writer = new ClientWriter();
     private ClientReader reader = new ClientReader();
@@ -20,6 +21,7 @@ public class TestMultipleNodes {
         server1.startNode();
         server2.startNode();
         server3.startNode();
+//        server4.startNode(); // this is started during the test
     }
 
     @AfterClass
@@ -27,6 +29,7 @@ public class TestMultipleNodes {
         server1.stopNode();
         server2.stopNode();
         server3.stopNode();
+        server4.stopNode();
     }
 
     @Before
@@ -42,17 +45,35 @@ public class TestMultipleNodes {
     }
 
     @Test
-    public void testMultipleRead() {
+    public void testMultipleReadFromNewlyAddedNode() {
 
         writer.writeDummyData();
 
-        reader.readDummyData();
+        // read and verify
+        {
+            IMap map = reader.readDummyData();
+            Assert.assertEquals(writer.buildDummyData(), map);
+        }
 
-        IMap map1 = reader.readDummyData();
-        Assert.assertEquals(writer.buildDummyData(), map1);
-        IMap map2 = reader.readDummyData();
-        Assert.assertEquals(writer.buildDummyData(), map2);
-        Assert.assertSame(map1, map2);
+        // start the 4th node
+        server4.startNode();
+
+        // read and verify again
+        {
+            IMap map = reader.readDummyData();
+            Assert.assertEquals(writer.buildDummyData(), map);
+        }
+
+        // shutdown first 3 nodes
+        server1.stopNode();
+        server2.stopNode();
+        server3.stopNode();
+
+        // read and verify again
+        {
+            IMap map = reader.readDummyData();
+            Assert.assertEquals(writer.buildDummyData(), map);
+        }
 
     }
 }
