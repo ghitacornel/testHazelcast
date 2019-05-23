@@ -48,6 +48,7 @@ public class TestMultipleNodes {
     public void testMultipleReadFromNewlyAddedNode() {
 
         writer.writeDummyData();
+        writer.stopClient();
 
         // read and verify
         {
