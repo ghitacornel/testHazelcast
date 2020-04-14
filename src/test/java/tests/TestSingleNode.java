@@ -2,7 +2,7 @@ package tests;
 
 import client.ClientReader;
 import client.ClientWriter;
-import com.hazelcast.core.IMap;
+import com.hazelcast.map.IMap;
 import node.ServerNode;
 import org.junit.*;
 
@@ -12,8 +12,8 @@ public class TestSingleNode {
 
     private static final ServerNode server = new ServerNode();
 
-    private ClientWriter writer = new ClientWriter();
-    private ClientReader reader = new ClientReader();
+    private final ClientWriter writer = new ClientWriter();
+    private final ClientReader reader = new ClientReader();
 
     @BeforeClass
     public static void setUpAll() {
@@ -53,9 +53,9 @@ public class TestSingleNode {
 
         writer.writeDummyData();
 
-        IMap map1 = reader.readDummyData();
+        IMap<Object, Object> map1 = reader.readDummyData();
         Assert.assertEquals(writer.buildDummyData(), map1);
-        IMap map2 = reader.readDummyData();
+        IMap<Object, Object> map2 = reader.readDummyData();
         Assert.assertEquals(writer.buildDummyData(), map2);
         Assert.assertSame(map1, map2);
 
@@ -68,7 +68,7 @@ public class TestSingleNode {
         Map<Object, Object> dummyData = writer.buildDummyData();
 
         for (int i = 0; i < 100; i++) {
-            IMap map = reader.readDummyData();
+            IMap<Object, Object> map = reader.readDummyData();
             Assert.assertEquals(dummyData, map);
         }
 

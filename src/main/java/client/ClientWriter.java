@@ -1,6 +1,6 @@
 package client;
 
-import com.hazelcast.core.IMap;
+import com.hazelcast.map.IMap;
 
 import java.util.HashMap;
 import java.util.Map;

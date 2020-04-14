@@ -2,7 +2,7 @@ package tests;
 
 import client.ClientReader;
 import client.ClientWriter;
-import com.hazelcast.core.IMap;
+import com.hazelcast.map.IMap;
 import node.ServerNode;
 import org.junit.*;
 
@@ -13,8 +13,8 @@ public class TestMultipleNodes {
     private static final ServerNode server3 = new ServerNode();
     private static final ServerNode server4 = new ServerNode();
 
-    private ClientWriter writer = new ClientWriter();
-    private ClientReader reader = new ClientReader();
+    private final ClientWriter writer = new ClientWriter();
+    private final ClientReader reader = new ClientReader();
 
     @BeforeClass
     public static void setUpAll() {
@@ -52,7 +52,7 @@ public class TestMultipleNodes {
 
         // read and verify
         {
-            IMap map = reader.readDummyData();
+            IMap<Object, Object> map = reader.readDummyData();
             Assert.assertEquals(writer.buildDummyData(), map);
         }
 
@@ -61,7 +61,7 @@ public class TestMultipleNodes {
 
         // read and verify again
         {
-            IMap map = reader.readDummyData();
+            IMap<Object, Object> map = reader.readDummyData();
             Assert.assertEquals(writer.buildDummyData(), map);
         }
 
@@ -72,7 +72,7 @@ public class TestMultipleNodes {
 
         // read and verify again
         {
-            IMap map = reader.readDummyData();
+            IMap<Object, Object> map = reader.readDummyData();
             Assert.assertEquals(writer.buildDummyData(), map);
         }
 

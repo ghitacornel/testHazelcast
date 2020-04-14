@@ -1,10 +1,10 @@
 package client;
 
-import com.hazelcast.core.IMap;
+import com.hazelcast.map.IMap;
 
 public class ClientReader extends ClientTemplate {
 
-    public IMap readDummyData() {
+    public IMap<Object, Object> readDummyData() {
         return client.getMap(mapID);
     }
 
