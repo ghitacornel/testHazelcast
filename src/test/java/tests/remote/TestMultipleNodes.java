@@ -31,13 +31,15 @@ public class TestMultipleNodes {
         writer.writeDummyData();
         writer.stopClient();
 
+        System.out.println("ensure node 2 is down");
+
         // read and verify
         {
             IMap<Object, Object> map = reader.readDummyData();
             Assert.assertEquals(writer.buildDummyData(), map);
         }
 
-        System.out.println("start node 3");
+        System.out.println("start node 2");
 
         // read and verify
         {
@@ -53,15 +55,7 @@ public class TestMultipleNodes {
             Assert.assertEquals(writer.buildDummyData(), map);
         }
 
-        System.out.println("stop node 2");
-
-        // read and verify again
-        {
-            IMap<Object, Object> map = reader.readDummyData();
-            Assert.assertEquals(writer.buildDummyData(), map);
-        }
-
-        System.out.println("verify only node 3 is up and running");
+        System.out.println("verify only node 2 is up and running");
 
     }
 }

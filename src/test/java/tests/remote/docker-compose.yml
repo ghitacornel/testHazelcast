@@ -1,12 +1,12 @@
 version: '3.6'
 
 services:
-      
+
   node1:
     image: hazelcast/hazelcast
     container_name: node1
     networks:
-      - my_network
+      - hazelcast_network
     ports:
       - 5701:5701
 
@@ -14,10 +14,10 @@ services:
     image: hazelcast/hazelcast
     container_name: node2
     networks:
-      - my_network
+      - hazelcast_network
     ports:
-      - 5702:5702
-      
+      - 5702:5701
+
 networks:
-  my_network:
+  hazelcast_network:
     driver: bridge
