@@ -10,7 +10,7 @@ enum ClientConfiguration {
 
     ClientConfiguration() {
         config = new ClientConfig();
-        config.getNetworkConfig().addAddress("192.168.0.1", "172.19.0.2");// for remote connections
+        config.getNetworkConfig().addAddress("192.168.0.1");// for remote connections
         config.getNetworkConfig().addOutboundPort(5701);// for remote connections
     }
 
