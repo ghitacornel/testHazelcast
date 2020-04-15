@@ -1,8 +1,8 @@
 package tests.remote;
 
 import com.hazelcast.map.IMap;
-import remote.client.ClientReader;
-import remote.client.ClientWriter;
+import remote.client.RemoteClientReader;
+import remote.client.RemoteClientWriter;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,8 +10,8 @@ import org.junit.Test;
 
 public class TestMultipleNodes {
 
-    private final ClientWriter writer = new ClientWriter();
-    private final ClientReader reader = new ClientReader();
+    private final RemoteClientWriter writer = new RemoteClientWriter();
+    private final RemoteClientReader reader = new RemoteClientReader();
 
     @Before
     public void setUp() {

@@ -2,15 +2,15 @@ package remote.client;
 
 import com.hazelcast.client.config.ClientConfig;
 
-enum ClientConfiguration {
+enum RemoteClientConfiguration {
 
     INSTANCE;
 
     private final ClientConfig config;
 
-    ClientConfiguration() {
+    RemoteClientConfiguration() {
         config = new ClientConfig();
-        config.getNetworkConfig().addAddress("192.168.0.1");// for remote connections
+        config.getNetworkConfig().addAddress("127.0.0.1");// for remote connections
         config.getNetworkConfig().addOutboundPort(5701);// for remote connections
         config.getNetworkConfig().addOutboundPort(5702);// for remote connections
     }

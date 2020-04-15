@@ -5,7 +5,7 @@ import com.hazelcast.map.IMap;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ClientWriter extends ClientTemplate {
+public class RemoteClientWriter extends RemoteClientTemplate {
 
     public void writeDummyData() {
         IMap<Object, Object> data = client.getMap(mapID);
