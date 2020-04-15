@@ -1,8 +1,8 @@
 package tests.remote;
 
 import com.hazelcast.map.IMap;
-import local.client.ClientReader;
-import local.client.ClientWriter;
+import remote.client.ClientReader;
+import remote.client.ClientWriter;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

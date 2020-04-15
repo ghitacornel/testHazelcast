@@ -2,13 +2,13 @@ package local.client;
 
 import com.hazelcast.client.config.ClientConfig;
 
-enum ClientConfiguration {
+enum LocalClientConfiguration {
 
     INSTANCE;
 
     private final ClientConfig config;
 
-    ClientConfiguration() {
+    LocalClientConfiguration() {
         config = new ClientConfig();
     }
 

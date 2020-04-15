@@ -2,7 +2,7 @@ package local.client;
 
 import com.hazelcast.map.IMap;
 
-public class ClientReader extends ClientTemplate {
+public class LocalClientReader extends LocalClientTemplate {
 
     public IMap<Object, Object> readDummyData() {
         return client.getMap(mapID);

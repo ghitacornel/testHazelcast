@@ -3,7 +3,7 @@ package local.node;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 
-public class ServerNode {
+public class LocalServerNode {
 
     private HazelcastInstance instance;
 

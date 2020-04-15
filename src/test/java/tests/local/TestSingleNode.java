@@ -1,28 +1,28 @@
 package tests.local;
 
-import local.client.ClientReader;
-import local.client.ClientWriter;
+import local.client.LocalClientReader;
+import local.client.LocalClientWriter;
 import com.hazelcast.map.IMap;
-import local.node.ServerNode;
+import local.node.LocalServerNode;
 import org.junit.*;
 
 import java.util.Map;
 
 public class TestSingleNode {
 
-    private static final ServerNode server = new ServerNode();
+    private static final LocalServerNode node = new LocalServerNode();
 
-    private final ClientWriter writer = new ClientWriter();
-    private final ClientReader reader = new ClientReader();
+    private final LocalClientWriter writer = new LocalClientWriter();
+    private final LocalClientReader reader = new LocalClientReader();
 
     @BeforeClass
     public static void setUpAll() {
-        server.startNode();
+        node.startNode();
     }
 
     @AfterClass
     public static void tearDownAll() {
-        server.stopNode();
+        node.stopNode();
     }
 
     @Before

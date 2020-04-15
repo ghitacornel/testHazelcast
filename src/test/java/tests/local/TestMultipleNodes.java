@@ -1,35 +1,35 @@
 package tests.local;
 
-import local.client.ClientReader;
-import local.client.ClientWriter;
+import local.client.LocalClientReader;
+import local.client.LocalClientWriter;
 import com.hazelcast.map.IMap;
-import local.node.ServerNode;
+import local.node.LocalServerNode;
 import org.junit.*;
 
 public class TestMultipleNodes {
 
-    private static final ServerNode server1 = new ServerNode();
-    private static final ServerNode server2 = new ServerNode();
-    private static final ServerNode server3 = new ServerNode();
-    private static final ServerNode server4 = new ServerNode();
+    private static final LocalServerNode node1 = new LocalServerNode();
+    private static final LocalServerNode node2 = new LocalServerNode();
+    private static final LocalServerNode node3 = new LocalServerNode();
+    private static final LocalServerNode node4 = new LocalServerNode();
 
-    private final ClientWriter writer = new ClientWriter();
-    private final ClientReader reader = new ClientReader();
+    private final LocalClientWriter writer = new LocalClientWriter();
+    private final LocalClientReader reader = new LocalClientReader();
 
     @BeforeClass
     public static void setUpAll() {
-        server1.startNode();
-        server2.startNode();
-        server3.startNode();
-//        server4.startNode(); // this is started during the test
+        node1.startNode();
+        node2.startNode();
+        node3.startNode();
+//        node4.startNode(); // this is started during the test
     }
 
     @AfterClass
     public static void tearDownAll() {
-        server1.stopNode();
-        server2.stopNode();
-        server3.stopNode();
-        server4.stopNode();
+        node1.stopNode();
+        node2.stopNode();
+        node3.stopNode();
+        node4.stopNode();
     }
 
     @Before
@@ -57,7 +57,7 @@ public class TestMultipleNodes {
         }
 
         // start the 4th local.node
-        server4.startNode();
+        node4.startNode();
 
         // read and verify again
         {
@@ -66,9 +66,9 @@ public class TestMultipleNodes {
         }
 
         // shutdown first 3 nodes
-        server1.stopNode();
-        server2.stopNode();
-        server3.stopNode();
+        node1.stopNode();
+        node2.stopNode();
+        node3.stopNode();
 
         // read and verify again
         {
