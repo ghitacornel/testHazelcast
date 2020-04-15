@@ -1,4 +1,4 @@
-package client;
+package local.client;
 
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.client.config.ClientConfig;

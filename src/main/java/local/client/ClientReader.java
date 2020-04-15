@@ -1,4 +1,4 @@
-package client;
+package local.client;
 
 import com.hazelcast.map.IMap;
 

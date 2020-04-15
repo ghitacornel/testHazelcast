@@ -1,9 +1,9 @@
-package tests;
+package tests.local;
 
-import client.ClientReader;
-import client.ClientWriter;
+import local.client.ClientReader;
+import local.client.ClientWriter;
 import com.hazelcast.map.IMap;
-import node.ServerNode;
+import local.node.ServerNode;
 import org.junit.*;
 
 import java.util.Map;
